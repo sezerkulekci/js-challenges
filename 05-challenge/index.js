@@ -13,7 +13,7 @@
 let yeniDizi = [];
 let enKucuk = undefined;
 let enBuyuk = undefined;
-let toplam = 0;
+let sayiToplam = 0;
 ortalama = undefined;
 //RASTGELE SAYI
 for (let sayi = 0; sayi < 10; sayi++) {
@@ -32,10 +32,10 @@ yeniDizi.forEach((x) => {
   } else if (x > enBuyuk) {
     enBuyuk = x;
   }
-  toplam += x;
+  sayiToplam += x;
 });
 
-ortalama = toplam / yeniDizi.length;
+ortalama = sayiToplam / yeniDizi.length;
 
 console.log(`1-100 arası rastgele 10 sayı : ${yeniDizi}`);
 console.log(`Aralarındaki en küçük sayı : ${enKucuk}`);
