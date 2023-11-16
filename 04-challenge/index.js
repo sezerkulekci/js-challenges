@@ -8,9 +8,11 @@
 // Benzersiz dizi: [0,9,4,5,7]
 
 let verilenDizi = [0, 9, 4, 9, 5, 4, 7, 0, 5, 4];
+let sade = [];
 
-let yeniDizi = verilenDizi.filter((element, index) => {
-  return verilenDizi.indexOf(element) === index;
+verilenDizi.forEach((sayi) => {
+  if (sade.indexOf(sayi) == -1) {
+    sade.push(sayi);
+  }
 });
-
-console.log("Benzersiz dizi: ", yeniDizi);
+console.log(sade);
