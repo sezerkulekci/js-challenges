@@ -57,4 +57,4 @@ array1.forEach((common) => {
     comArr.push(common);
   }
 });
-console.log(comArr);
+console.log("ortak sayılar:", comArr);
