@@ -12,6 +12,7 @@
 // verilenDizi.forEach((sayi) => {
 //   const varMi = sade.indexOf(sayi) == -1;
 //   if (varMi == false) {
+//     console.log("gg");
 //   } else {
 //     sade.push(sayi);
 //   }
