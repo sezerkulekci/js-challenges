@@ -20,6 +20,7 @@ const array2 = [3, 2, 6, 8, 3];
 
 let merging = [];
 let newObj = {};
+let rpead = [];
 let count = 0;
 
 array1.forEach((merg) => {
@@ -37,19 +38,23 @@ merging.forEach((x) => {
     newObj[x] = 0;
   }
   newObj[x] += 1;
+  if (newObj[x] > count) {
+    count = newObj[x];
+    count = x;
+    rpead = x;
+  }
 });
-// if (newObj[x] > count) {
-//   count = newObj[x];
-//   count = x;
-// }h
+console.log("en çok tekrar eden:", rpead);
+
 console.log(newObj);
+
 // ORTAK ELEMAN DİZİSİ
 
-// let comArr = [];
+let comArr = [];
 
-// array1.forEach((common) => {
-//   if (array2.indexOf(common) !== -1) {
-//     comArr.push(common);
-//   }
-// });
-// console.log(comArr);
+array1.forEach((common) => {
+  if (array2.indexOf(common) !== -1) {
+    comArr.push(common);
+  }
+});
+console.log(comArr);
