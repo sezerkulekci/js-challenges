@@ -55,15 +55,15 @@ const students = [
   },
   {
     name: "Durmuş",
-    average: 2.7,
+    average: 1.7,
     appset: 18,
   },
 ];
 
 let kalanlar = [];
 let kalmayaYakin = [];
-let enIyi = {};
-let enKotu = {};
+let enIyi = undefined;
+let enKotu = undefined;
 
 students.forEach((student) => {
   if (student.average < 2 && student.appset >= 10) {
@@ -79,15 +79,14 @@ students.forEach((student) => {
   ) {
     kalmayaYakin.push(student);
   }
-
-  if (student.average > 3 && student.appset < 10) {
+  if (enIyi == undefined) {
     enIyi = student;
-  } else if (student.average > enIyi.average) {
+  } else if (student.average > enIyi.average && student.appset < 10) {
     enIyi = student;
   }
-  if (student.average < 2 && student.appset > 10) {
+  if (enKotu == undefined) {
     enKotu = student;
-  } else if (student.average < enKotu.average) {
+  } else if (student.average < enKotu.average && student.appset > 10) {
     enKotu = student;
   }
 });
