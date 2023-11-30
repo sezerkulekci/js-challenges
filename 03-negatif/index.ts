@@ -8,11 +8,11 @@
 // Pozitif dizi: [3,9,4]
 // Negatif dizi: [-2,-1,-7]
 
-const sayilar = [3, 9, -2, 0, 4, -1, -7];
-const pozitif = [];
-const negatif = [];
+const sayilar: number[] = [3, 9, -2, 0, 4, -1, -7];
+const pozitif: number[] = [];
+const negatif: number[] = [];
 
-sayilar.forEach((sayi) => {
+sayilar.forEach((sayi: number) => {
   if (sayi >= 0) {
     pozitif.push(sayi);
   } else {

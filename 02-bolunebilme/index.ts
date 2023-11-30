@@ -10,6 +10,8 @@
 let toplam: number = 0;
 let liste: number = 0;
 
+toplam = 4
+
 for (let i: number = 1; i <= 100; i++) {
   if (i % 3 == 0 && i % 5 == 0) {
     toplam += i;
@@ -18,3 +20,4 @@ for (let i: number = 1; i <= 100; i++) {
 }
 console.log("sayıların toplamı: " + toplam);
 console.log("liste sayısı :" + liste);
+
