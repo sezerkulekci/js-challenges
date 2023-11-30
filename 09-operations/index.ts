@@ -1,10 +1,10 @@
 let operations: string[] = ["--X", "X++", "X++"];
-let sayacSayi: number = 0;
+let operationsNumber: number = 0;
 operations.forEach((sayacElement: string) => {
   if (sayacElement == "--X") {
-    sayacSayi--;
+    operationsNumber--;
   } else {
-    sayacSayi++;
+    operationsNumber++;
   }
 });
-console.log(sayacSayi);
+console.log(operationsNumber);
