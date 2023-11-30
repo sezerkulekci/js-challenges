@@ -13,27 +13,28 @@
 // ortak eleman dizisi: [2,3]
 // en çok tekrar eden eleman: 3
 
-const array1 = [0, 1, 2, 3, 4];
-const array2 = [3, 2, 6, 8, 3];
+const array1: number[] = [0, 1, 2, 3, 4];
+const array2: number[] = [3, 2, 6, 8, 3];
 
 // EN ÇOK TEKRAR EDEN
 
-let merging = [];
-let newObj = {};
-let rpead = [];
-let count = 0;
+let merging: number[] = [];
+let newObj: any = {};
+let repeat: number = 0;
+let count: number = 0;
 
-array1.forEach((merg) => {
+array1.forEach((merg: number) => {
   merging.push(merg);
 });
-array2.forEach((merg2) => {
+array2.forEach((merg2: number) => {
   merging.push(merg2);
 });
 //(newObj[x] || 0) + 1; = newObj[x] Burada [x] undefined döneceği için [x] + 1 NaN döner.
 //Bu yüzden güvenlik amaçlı || 0 kullanılıyor. eğer değer yoksa 0 döner. varsa kaç defa geçtiği döner
 
-merging.forEach((x) => {
+merging.forEach((x: number) => {
   //newObj[x] = (newObj[x] || 0) + 1;
+
   if (newObj[x] == undefined) {
     newObj[x] = 0;
   }
@@ -41,16 +42,16 @@ merging.forEach((x) => {
   if (newObj[x] > count) {
     count = newObj[x];
     count = x;
-    rpead = x;
+    repeat = x;
   }
 });
-console.log("en çok tekrar eden:", rpead);
+console.log("en çok tekrar eden:", repeat);
 
 console.log(newObj);
 
 // ORTAK ELEMAN DİZİSİ
 
-let comArr = [];
+let comArr: number[] = [];
 
 array1.forEach((common) => {
   if (array2.indexOf(common) !== -1) {
