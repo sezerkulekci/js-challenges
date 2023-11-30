@@ -44,39 +44,38 @@ const currentYear: number = new Date().getFullYear();
 
 
 
-let enKucuk: familyMember | undefined = undefined;
-let enBuyuk: familyMember | undefined = undefined;
-let sonuc: number = 0;
+let enKucukKisi: familyMember | undefined = undefined;
+let enBuyukKisi: familyMember | undefined = undefined;
+let aileYasOrtalamasi: number = 0;
 
 
 familyMembers.forEach((kisi) => {
   //en küçük kontrol
-  if (enKucuk == undefined) {
-    enKucuk = kisi;
-  } else if (enKucuk.birth < kisi.birth) {
-    enKucuk = kisi;
+  if (enKucukKisi == undefined) {
+    enKucukKisi = kisi;
+  } else if (enKucukKisi.birth < kisi.birth) {
+    enKucukKisi = kisi;
   }
   //en büyük kontrol
-  if (enBuyuk == undefined) {
-    enBuyuk = kisi;
-  } else if (enBuyuk.birth > kisi.birth) {
-    enBuyuk = kisi;
+  if (enBuyukKisi == undefined) {
+    enBuyukKisi = kisi;
+  } else if (enBuyukKisi.birth > kisi.birth) {
+    enBuyukKisi = kisi;
   }
   //toplam kontrolü
-  sonuc += currentYear - kisi.birth;
+  aileYasOrtalamasi += currentYear - kisi.birth;
 });
 
+console.log(`ailenin yaş ortalaması ${aileYasOrtalamasi / familyMembers.length} dir`);
 
-console.log(`ailenin yaş ortalaması ${sonuc / familyMembers.length} dir`);
 
+if (enKucukKisi != undefined)
 
-if (enKucuk != undefined)
+  console.log(`en küçük kişi ${currentYear - enKucukKisi.birth} yaşındadır`);
 
-  console.log(`en küçük kişi ${currentYear - enKucuk.birth} yaşındadır`);
+if (enBuyukKisi != undefined)
 
-if (enBuyuk != undefined)
-
-  console.log(`en büyük kişi ${currentYear - enBuyuk.birth} yaşındadır`);
+  console.log(`en büyük kişi ${currentYear - enBuyukKisi.birth} yaşındadır`);
 
 
 

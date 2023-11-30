@@ -11,33 +11,33 @@
 
 //DEĞİŞKENLER
 let yeniDizi: number[] = [];
-let enKucuk: number | undefined = undefined;
-let enBuyuk: number | undefined = undefined;
-let toplam: number = 0;
-let ortalama: number | undefined = undefined;
+let enKucukSayi: number | undefined = undefined;
+let enBuyukSayi: number | undefined = undefined;
+let toplamSayi: number = 0;
+let ortalamaSayi: number | undefined = undefined;
 //RASTGELE SAYI
-for (let sayi: number = 0; sayi < 10; sayi++) {
+for (let sayi = 0; sayi < 10; sayi++) {
   yeniDizi.push(Math.floor(Math.random() * 101));
 }
 
-yeniDizi.forEach((x: number) => {
+yeniDizi.forEach((x) => {
   //EN KÜÇÜK SAYI
-  if (enKucuk == undefined) {
-    enKucuk = x;
-  } else if (x < enKucuk) {
-    enKucuk = x;
+  if (enKucukSayi == undefined) {
+    enKucukSayi = x;
+  } else if (x < enKucukSayi) {
+    enKucukSayi = x;
   }
-  if (enBuyuk == undefined) {
-    enBuyuk = x;
-  } else if (x > enBuyuk) {
-    enBuyuk = x;
+  if (enBuyukSayi == undefined) {
+    enBuyukSayi = x;
+  } else if (x > enBuyukSayi) {
+    enBuyukSayi = x;
   }
-  toplam += x;
+  toplamSayi += x;
 });
 
-ortalama = toplam / yeniDizi.length;
+ortalamaSayi = toplamSayi / yeniDizi.length;
 
 console.log(`1-100 arası rastgele 10 sayı : ${yeniDizi}`);
-console.log(`Aralarındaki en küçük sayı : ${enKucuk}`);
-console.log(`Aralarındaki en büyük sayı : ${enBuyuk}`);
-console.log(`Sayıların Aritmetik ortalaması ${ortalama}`);
+console.log(`Aralarındaki en küçük sayı : ${enKucukSayi}`);
+console.log(`Aralarındaki en büyük sayı : ${enBuyukSayi}`);
+console.log(`Sayıların Aritmetik ortalaması ${ortalamaSayi}`);
