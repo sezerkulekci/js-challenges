@@ -7,10 +7,10 @@
 // Kosula uyan toplam numara sayisi: 17
 // Kosula uyan numaralarin toplami: 48
 
-let toplam = 0;
-let liste = 0;
+let toplam: number = 0;
+let liste: number = 0;
 
-for (let i = 1; i <= 100; i++) {
+for (let i: number = 1; i <= 100; i++) {
   if (i % 3 == 0 && i % 5 == 0) {
     toplam += i;
     liste++;

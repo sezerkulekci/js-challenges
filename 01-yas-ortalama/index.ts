@@ -1,4 +1,13 @@
-const familyMembers = [
+
+interface familyMember {
+  name: string;
+  birth: number;
+  gender: number;
+}
+
+
+const familyMembers: familyMember[] = [
+
   {
     name: "ali",
     birth: 1992,
@@ -26,16 +35,19 @@ const familyMembers = [
   },
 ];
 
-const currentYear = new Date().getFullYear();
+const currentYear: number = new Date().getFullYear();
 
 // Expectations
 // 1. En genc aile uyesi -- adını ve yaşını yazdırcam
 // 2. En yaslı aile üyesi
 // 3. ailenin yaş ortalaması
 
-let enKucuk = undefined;
-let enBuyuk = undefined;
-let sonuc = 0;
+
+
+let enKucuk: familyMember | undefined = undefined;
+let enBuyuk: familyMember | undefined = undefined;
+let sonuc: number = 0;
+
 
 familyMembers.forEach((kisi) => {
   //en küçük kontrol
@@ -54,6 +66,18 @@ familyMembers.forEach((kisi) => {
   sonuc += currentYear - kisi.birth;
 });
 
-console.log(`en küçük kişi ${currentYear - enKucuk.birth} yaşındadır`);
-console.log(`en büyük kişi ${currentYear - enBuyuk.birth} yaşındadır`);
+
 console.log(`ailenin yaş ortalaması ${sonuc / familyMembers.length} dir`);
+
+
+if (enKucuk != undefined)
+
+  console.log(`en küçük kişi ${currentYear - enKucuk.birth} yaşındadır`);
+
+if (enBuyuk != undefined)
+
+  console.log(`en büyük kişi ${currentYear - enBuyuk.birth} yaşındadır`);
+
+
+
+
