@@ -10,17 +10,17 @@
 // Aritmetik ortalama: [21]
 
 //DEĞİŞKENLER
-let yeniDizi = [];
-let enKucuk = undefined;
-let enBuyuk = undefined;
-let toplam = 0;
-ortalama = undefined;
+let yeniDizi: number[] = [];
+let enKucuk: number | undefined = undefined;
+let enBuyuk: number | undefined = undefined;
+let toplam: number = 0;
+let ortalama: number | undefined = undefined;
 //RASTGELE SAYI
-for (let sayi = 0; sayi < 10; sayi++) {
+for (let sayi: number = 0; sayi < 10; sayi++) {
   yeniDizi.push(Math.floor(Math.random() * 101));
 }
 
-yeniDizi.forEach((x) => {
+yeniDizi.forEach((x: number) => {
   //EN KÜÇÜK SAYI
   if (enKucuk == undefined) {
     enKucuk = x;

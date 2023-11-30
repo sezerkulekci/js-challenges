@@ -19,10 +19,10 @@
 // });
 // console.log(sade);
 
-let verilenDizi = [0, 9, 4, 9, 5, 4, 7, 0, 5, 4];
-let sade = [];
+let verilenDizi: number[] = [0, 9, 4, 9, 5, 4, 7, 0, 5, 4];
+let sade: number[] = [];
 
-verilenDizi.forEach((sayi) => {
+verilenDizi.forEach((sayi: number) => {
   if (sade.indexOf(sayi) == -1) {
     sade.push(sayi);
   }
