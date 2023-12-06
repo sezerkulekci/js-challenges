@@ -1,3 +1,3 @@
 ```sh
-./deno.exe run 15-school/index.js
+./deno.exe run 15-school/index.ts
 ```
