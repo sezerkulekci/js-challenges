@@ -7,7 +7,7 @@
 //Bu isteğe ait bir sipariş oluştur.
 //Siparişiniz alınmıştır diye mesaj yazsın
 //tekrar 1. adıma dön
-//***********************
+//*********************************************
 namespace karZarar {
   interface Product {
     name: string;
@@ -22,26 +22,42 @@ namespace karZarar {
   }
   const products: Product[] = [
     { id: 1, name: "everest klavye", quantity: 10, },
-    { id: 2, name: "logitech g300", quantity: 5 },
+    { id: 2, name: "logitech g300 mause", quantity: 5 },
     { id: 3, name: "beats kulaklık", quantity: 3 },
     { id: 4, name: "mause pad", quantity: 8 },
     { id: 5, name: "hoparlör", quantity: 2 }
   ]
-  const orders: Order[] = [{ id: 12, productId: 1, quantity: 1, userName: "ali" }]
 
-  let order: Order | undefined = undefined;
+  let order: Order[] = [];
 
-  let userInput = prompt('ürün id giriniz')
-  let productId = Number(userInput)
-  console.log(productId);
+  let idInput = prompt('Ürün ID giriniz');
+  let productId = Number(idInput);
 
-  products.forEach(urun => {
-    if (urun.id == productId) {
-      console.log(urun.name);
-    }
-  })
+  let adetInput = prompt('Kaç tane alacaksınız');
+  let orderQuantity = Number(adetInput);
 
-  order = { id: 2, productId: 0, userName: 'ahmet', quantity: 0 }
-  orders.push(order)
+  if (isNaN(productId) || isNaN(orderQuantity)) {
+    console.log('Geçersiz id girildi');
+  } else {
+
+    products.forEach(urun => {
+      if (urun.id == productId) {
+        console.log("id'si girilen ürün:", urun.name);
+
+        if (urun.quantity >= orderQuantity) {
+          console.log("sipariş alındı");
+          const data = urun.quantity -= orderQuantity
+          const newOrder: Order = {
+            id: urun.id,
+            productId,
+            quantity: data,
+            userName: urun.name,
+          };
+          console.log(order.push(newOrder));
+        }
+      }
+    })
+  }
+  console.log(products);
 }
 
