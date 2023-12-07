@@ -30,34 +30,54 @@ namespace karZarar {
 
   let order: Order[] = [];
 
+  let people = prompt('İsminizi giriniz')
+  let peopleName = String(people)
+
+  console.log(`Hoşgeldin ${peopleName}! Ürün listesi ve stok durumu aşağıdaki gibidir..`);
+
+  products.forEach(urunList => {
+    console.log(urunList);
+  })
+  console.log("**********************************");
+
   let idInput = prompt('Ürün ID giriniz');
   let productId = Number(idInput);
 
   let adetInput = prompt('Kaç tane alacaksınız');
   let orderQuantity = Number(adetInput);
 
-  if (isNaN(productId) || isNaN(orderQuantity)) {
+
+
+  if (isNaN(productId) || productId == 0 || isNaN(orderQuantity) || orderQuantity == 0 || orderQuantity == null) {
     console.log('Geçersiz id girildi');
   } else {
+    console.log("**********************************");
 
     products.forEach(urun => {
-      if (urun.id == productId) {
+      if (urun.id === productId) {
         console.log("id'si girilen ürün:", urun.name);
 
         if (urun.quantity >= orderQuantity) {
-          console.log("sipariş alındı");
-          const data = urun.quantity -= orderQuantity
+          console.log("sipariş alındı...");
+
+          const data = orderQuantity
           const newOrder: Order = {
             id: urun.id,
             productId,
             quantity: data,
-            userName: urun.name,
+            userName: peopleName,
+
           };
-          console.log(order.push(newOrder));
+
+          order.push(newOrder);
+          console.log(newOrder);
+        } else {
+          console.log("stok yetersiz");
         }
+
       }
     })
   }
-  console.log(products);
+
 }
 
