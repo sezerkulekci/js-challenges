@@ -29,15 +29,21 @@ namespace karZarar {
   ]
 
   let order: Order[] = [];
+  let updateProduct: Product[] = []
 
   let people = prompt('İsminizi giriniz')
   let peopleName = String(people)
 
   console.log(`Hoşgeldin ${peopleName}! Ürün listesi ve stok durumu aşağıdaki gibidir..`);
 
-  products.forEach(urunList => {
-    console.log(urunList);
-  })
+  function productFunc(productList: Product[]): void {
+    productList.forEach(urunList => {
+      console.log(urunList);
+
+    });
+  }
+  productFunc(products);
+
   console.log("**********************************");
 
   let idInput = prompt('Ürün ID giriniz');
@@ -69,15 +75,24 @@ namespace karZarar {
 
           };
 
+
           order.push(newOrder);
           console.log(newOrder);
+
+          console.log("**********************************");
+
+
         } else {
           console.log("stok yetersiz");
         }
 
       }
+
     })
+
   }
+
+
 
 }
 
