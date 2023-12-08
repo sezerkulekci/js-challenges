@@ -29,7 +29,6 @@ namespace karZarar {
   ]
 
   let order: Order[] = [];
-  let updateProduct: Product[] = []
 
   let people = prompt('İsminizi giriniz')
   let peopleName = String(people)
@@ -76,11 +75,19 @@ namespace karZarar {
           };
 
 
+
           order.push(newOrder);
-          console.log(newOrder);
+          console.log("siparişiniz: ", newOrder);
 
           console.log("**********************************");
 
+          urun.quantity -= orderQuantity
+          productFunc(products);
+
+          const devamMi = confirm('alışverişe devam etmek istiyor musunuz?')
+          if (devamMi) {
+            productFunc(products)
+          } else { 'Yine bekleriz.' }
 
         } else {
           console.log("stok yetersiz");
