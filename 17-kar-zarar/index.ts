@@ -35,71 +35,66 @@ namespace karZarar {
 
   console.log(`Hoşgeldin ${peopleName}! Ürün listesi ve stok durumu aşağıdaki gibidir..`);
 
-  function productFunc(productList: Product[]): void {
+  function printProduct(productList: Product[]): void {
     productList.forEach(urunList => {
       console.log(urunList);
 
     });
   }
-  productFunc(products);
+  let devamEt: boolean = true;
 
-  console.log("**********************************");
+  while (devamEt) {
+    printProduct(products);
 
-  let idInput = prompt('Ürün ID giriniz');
-  let productId = Number(idInput);
-
-  let adetInput = prompt('Kaç tane alacaksınız');
-  let orderQuantity = Number(adetInput);
-
-
-
-  if (isNaN(productId) || productId == 0 || isNaN(orderQuantity) || orderQuantity == 0 || orderQuantity == null) {
-    console.log('Geçersiz id girildi');
-  } else {
     console.log("**********************************");
 
-    products.forEach(urun => {
-      if (urun.id === productId) {
-        console.log("id'si girilen ürün:", urun.name);
+    let idInput = prompt('Ürün ID giriniz');
+    let productId = Number(idInput);
 
-        if (urun.quantity >= orderQuantity) {
-          console.log("sipariş alındı...");
+    let adetInput = prompt('Kaç tane alacaksınız');
+    let orderQuantity = Number(adetInput);
 
-          const data = orderQuantity
-          const newOrder: Order = {
-            id: urun.id,
-            productId,
-            quantity: data,
-            userName: peopleName,
+    if (isNaN(productId) || productId == 0 || isNaN(orderQuantity) || orderQuantity == 0 || orderQuantity == null) {
+      console.log('Geçersiz id girildi');
+    } else {
+      console.log("**********************************");
 
-          };
+      products.forEach(urun => {
+        if (urun.id === productId) {
+          console.log("id'si girilen ürün:", urun.name);
 
+          if (urun.quantity >= orderQuantity) {
+            console.log("sipariş alındı...");
 
+            const data = orderQuantity
+            const newOrder: Order = {
+              id: urun.id,
+              productId,
+              quantity: data,
+              userName: peopleName,
 
-          order.push(newOrder);
-          console.log("siparişiniz: ", newOrder);
+            };
 
-          console.log("**********************************");
+            order.push(newOrder);
+            console.log("siparişiniz: ", newOrder);
 
-          urun.quantity -= orderQuantity
-          productFunc(products);
+            console.log("**********************************");
 
-          const devamMi = confirm('alışverişe devam etmek istiyor musunuz?')
-          if (devamMi) {
-            productFunc(products)
-          } else { 'Yine bekleriz.' }
+            urun.quantity -= orderQuantity
+            printProduct(products);
 
-        } else {
-          console.log("stok yetersiz");
+            devamEt = confirm('alışverişe devam etmek istiyor musunuz?')
+
+            console.log('**************************');
+            // productFunc(products)
+
+          } else {
+            console.log("stok yetersiz");
+          }
         }
-
-      }
-
-    })
-
+      })
+    }
   }
-
-
-
+  console.log('Yine bekleriz..');
 }
 
