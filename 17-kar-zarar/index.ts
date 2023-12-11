@@ -13,19 +13,22 @@ namespace karZarar {
     name: string;
     quantity: number; //stoktaki adet
     id: number;
+    price: number; //10.5 gibi
   }
   interface Order {
     userName: string; // satın alan kişinin adı
     quantity: number;  //kaç adet satın aldığı
     id: number; // normal id
     productId: number; // satın alınan ürünün id'si.
+    price: number
+    totalAmount: number; // quantity*price
   }
   const products: Product[] = [
-    { id: 1, name: "everest klavye", quantity: 10, },
-    { id: 2, name: "logitech g300 mause", quantity: 5 },
-    { id: 3, name: "beats kulaklık", quantity: 3 },
-    { id: 4, name: "mause pad", quantity: 8 },
-    { id: 5, name: "hoparlör", quantity: 2 }
+    { id: 1, name: "everest klavye", quantity: 10, price: 10.5 },
+    { id: 2, name: "logitech g300 mause", quantity: 5, price: 8 },
+    { id: 3, name: "beats kulaklık", quantity: 3, price: 2.7 },
+    { id: 4, name: "mause pad", quantity: 8, price: 1.4 },
+    { id: 5, name: "hoparlör", quantity: 2, price: 3.1 }
   ]
 
   let order: Order[] = [];
@@ -34,6 +37,10 @@ namespace karZarar {
   let peopleName = String(people)
 
   console.log(`Hoşgeldin ${peopleName}! Ürün listesi ve stok durumu aşağıdaki gibidir..`);
+
+  printProduct(products);
+
+  console.log("**********************************");
 
   function printProduct(productList: Product[]): void {
     productList.forEach(urunList => {
@@ -44,10 +51,8 @@ namespace karZarar {
   let devamEt: boolean = true;
 
   while (devamEt) {
-    printProduct(products);
 
-    console.log("**********************************");
-
+    let totalAmount = 0;
     let idInput = prompt('Ürün ID giriniz');
     let productId = Number(idInput);
 
@@ -72,12 +77,19 @@ namespace karZarar {
               productId,
               quantity: data,
               userName: peopleName,
+              price: urun.price,
+              totalAmount: urun.price * data
 
             };
 
             order.push(newOrder);
-            console.log("siparişiniz: ", newOrder);
+            console.log("siparişiniz: ", order);
 
+            order.forEach(order => {
+              totalAmount += order.totalAmount;
+            })
+
+            console.log(totalAmount);
             console.log("**********************************");
 
             urun.quantity -= orderQuantity
@@ -86,7 +98,6 @@ namespace karZarar {
             devamEt = confirm('alışverişe devam etmek istiyor musunuz?')
 
             console.log('**************************');
-            // productFunc(products)
 
           } else {
             console.log("stok yetersiz");
@@ -95,6 +106,8 @@ namespace karZarar {
       })
     }
   }
+  //ödenen miktar toplamı.
+
   console.log('Yine bekleriz..');
 }
 
