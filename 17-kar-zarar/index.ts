@@ -30,8 +30,8 @@ namespace karZarar {
     { id: 4, name: "mause pad", quantity: 8, price: 1.4 },
     { id: 5, name: "hoparlör", quantity: 2, price: 3.1 }
   ]
-
-  let order: Order[] = [];
+  let totalAmount = 0;
+  let orders: Order[] = [];
 
   let people = prompt('İsminizi giriniz')
   let peopleName = String(people)
@@ -40,29 +40,25 @@ namespace karZarar {
 
   printProduct(products);
 
-  console.log("**********************************");
+
 
   function printProduct(productList: Product[]): void {
-    productList.forEach(urunList => {
-      console.log(urunList);
-
-    });
+    console.table(productList);
   }
   let devamEt: boolean = true;
 
   while (devamEt) {
 
-    let totalAmount = 0;
-    let idInput = prompt('Ürün ID giriniz');
+
+    let idInput = prompt('>> Ürün ID giriniz: ');
     let productId = Number(idInput);
 
-    let adetInput = prompt('Kaç tane alacaksınız');
+    let adetInput = prompt('>> Kaç tane alacaksınız: ');
     let orderQuantity = Number(adetInput);
 
     if (isNaN(productId) || productId == 0 || isNaN(orderQuantity) || orderQuantity == 0 || orderQuantity == null) {
       console.log('Geçersiz id girildi');
     } else {
-      console.log("**********************************");
 
       products.forEach(urun => {
         if (urun.id === productId) {
@@ -82,14 +78,14 @@ namespace karZarar {
 
             };
 
-            order.push(newOrder);
-            console.log("siparişiniz: ", order);
-
-            order.forEach(order => {
+            orders.push(newOrder);
+            console.log("siparişiniz: ", orders);
+            totalAmount = 0
+            orders.forEach(order => {
               totalAmount += order.totalAmount;
             })
 
-            console.log(totalAmount);
+            console.log("toplam sipariş tutarı: ", totalAmount);
             console.log("**********************************");
 
             urun.quantity -= orderQuantity
@@ -97,7 +93,7 @@ namespace karZarar {
 
             devamEt = confirm('alışverişe devam etmek istiyor musunuz?')
 
-            console.log('**************************');
+
 
           } else {
             console.log("stok yetersiz");
@@ -107,7 +103,7 @@ namespace karZarar {
     }
   }
   //ödenen miktar toplamı.
-
+  console.log("toplam sipariş tutarı: ", totalAmount);
   console.log('Yine bekleriz..');
 }
 
